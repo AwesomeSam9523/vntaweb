@@ -1,0 +1,9 @@
+requests
+flask==2.0.0
+requests-oauthlib
+Click==7.0
+gunicorn==19.9.0
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.1
+Werkzeug
