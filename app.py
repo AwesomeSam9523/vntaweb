@@ -6,7 +6,7 @@ from requests_oauthlib import OAuth2Session
 
 OAUTH2_CLIENT_ID = "853971223682482226"
 OAUTH2_CLIENT_SECRET = "NUJl5Q5K2_db7DTS9BX8oa8c7Fc4K6te"
-OAUTH2_REDIRECT_URI = 'https://vnta.herokuapp.com/callback'
+OAUTH2_REDIRECT_URI = 'https://vntaweb.herokuapp.com/callback'
 
 API_BASE_URL = os.environ.get('API_BASE_URL', 'https://discordapp.com/api')
 AUTHORIZATION_BASE_URL = API_BASE_URL + '/oauth2/authorize'
