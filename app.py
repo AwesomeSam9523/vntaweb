@@ -38,7 +38,6 @@ def make_session(token=None, state=None, scope=None):
         auto_refresh_url=TOKEN_URL,
         token_updater=token_updater)
 
-
 @app.route('/')
 def index():
     scope = request.args.get(
