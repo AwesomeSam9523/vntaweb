@@ -14,7 +14,7 @@ TOKEN_URL = API_BASE_URL + '/oauth2/token'
 
 app = Flask(__name__)
 app.debug = True
-app.config['SECRET_KEY'] = OAUTH2_CLIENT_SECRET
+app.config['SECRET_KEY'] = OAUTH2_CLIENT_SECRET+"new"
 
 if 'http://' in OAUTH2_REDIRECT_URI:
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = 'true'
@@ -22,7 +22,6 @@ if 'http://' in OAUTH2_REDIRECT_URI:
 
 def token_updater(token):
     session['oauth2_token'] = token
-
 
 def make_session(token=None, state=None, scope=None):
     return OAuth2Session(
