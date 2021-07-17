@@ -47,6 +47,9 @@ def index():
     session['oauth2_state'] = state
     return redirect(authorization_url)
 
+@app.route("/ping")
+def pingpong():
+    return "Pong", 200
 
 @app.route('/callback')
 def callback():
