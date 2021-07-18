@@ -1,8 +1,56 @@
 import json
 import os, requests
 import flask
-from flask import Flask, g, session, redirect, request, url_for, jsonify
+from flask import Flask, g, session, redirect, request, url_for, jsonify, render_template
 from requests_oauthlib import OAuth2Session
+
+htmlcode = """
+<html>
+<body>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&family=Ubuntu:wght@500&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  background-image: url("https://images-ext-2.discordapp.net/external/CLKNur7RCVIoCasjtqgZcSPyu2C84SEPIZzcu_mazKo/%3Fsize%3D1024/https/cdn.discordapp.com/banners/719946380285837322/8a1a41feab394f46032ff3327fafc6ca.png");
+
+  height: 100%;
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+
+  background-position: center;
+  background-size: cover;
+}
+.bg-text {
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.4);
+  color: #fff;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 50%;
+  padding: 15px;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 150%;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: black;
+}
+
+</style>
+<div class="bg-image"></div>
+<div class="bg-text">
+  <h1>Success!</h1>
+  <h2>You can close this page now</h2>
+</div>
+</body>
+</html>
+"""
 
 OAUTH2_CLIENT_ID = "853971223682482226"
 OAUTH2_CLIENT_SECRET = "NUJl5Q5K2_db7DTS9BX8oa8c7Fc4K6te"
@@ -76,10 +124,9 @@ def me():
         data={"payload_json": json.dumps(data2)},
         headers={"Authorization": "Bot " + "ODUzOTcxMjIzNjgyNDgyMjI2.YMdIrQ.N-06PP7nmUz-E-3bQvWqCtArhP0"}
     )
-    if res.status_code == 200:
-        return {"success":True, "action":"You may close this page now"}, 200
-    else:
-        return {"success": False, "action": "Please retry later"}, 404
+    with open("success.html", "w") as f:
+        f.write(htmlcode)
+    return render_template("success.html")
 
 if __name__ == '__main__':
     app.run()
