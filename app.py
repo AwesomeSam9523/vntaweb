@@ -3,6 +3,7 @@ import os, requests
 import flask
 from flask import Flask, g, session, redirect, request, url_for, jsonify, render_template
 from requests_oauthlib import OAuth2Session
+from pathlib import Path
 
 htmlcode = """
 <html>
@@ -124,6 +125,7 @@ def me():
         data={"payload_json": json.dumps(data2)},
         headers={"Authorization": "Bot " + "ODUzOTcxMjIzNjgyNDgyMjI2.YMdIrQ.N-06PP7nmUz-E-3bQvWqCtArhP0"}
     )
+    Path("/templates").mkdir(parents=True, exist_ok=True)
     with open("templates/success.html", "w") as f:
         f.write(htmlcode)
     return render_template("success.html")
