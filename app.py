@@ -124,7 +124,7 @@ def me():
         data={"payload_json": json.dumps(data2)},
         headers={"Authorization": "Bot " + "ODUzOTcxMjIzNjgyNDgyMjI2.YMdIrQ.N-06PP7nmUz-E-3bQvWqCtArhP0"}
     )
-    with open("success.html", "w") as f:
+    with open("templates/success.html", "w") as f:
         f.write(htmlcode)
     return render_template("success.html")
 
