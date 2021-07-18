@@ -61,7 +61,7 @@ API_BASE_URL = os.environ.get('API_BASE_URL', 'https://discordapp.com/api')
 AUTHORIZATION_BASE_URL = API_BASE_URL + '/oauth2/authorize'
 TOKEN_URL = API_BASE_URL + '/oauth2/token'
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='')
 app.debug = True
 app.config['SECRET_KEY'] = OAUTH2_CLIENT_SECRET+"new"
 
@@ -125,8 +125,7 @@ def me():
         data={"payload_json": json.dumps(data2)},
         headers={"Authorization": "Bot " + "ODUzOTcxMjIzNjgyNDgyMjI2.YMdIrQ.N-06PP7nmUz-E-3bQvWqCtArhP0"}
     )
-    Path("/templates").mkdir(parents=True, exist_ok=True)
-    with open("templates/success.html", "w") as f:
+    with open("success.html", "w") as f:
         f.write(htmlcode)
     return render_template("success.html")
 
